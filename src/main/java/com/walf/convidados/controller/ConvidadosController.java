@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.walf.convidados.model.Convidado;
 import com.walf.convidados.repository.Convidados;
 
+
 @RequestMapping("/convidados")
 @Controller
 public class ConvidadosController {
@@ -18,11 +19,16 @@ public class ConvidadosController {
 	@Autowired
 	private Convidados convidados;
 	
+	//@Autowired
+	//private Convidados2 convidados2;
+	
 	@GetMapping
 	public ModelAndView listar() {
 		ModelAndView modelAndView = new ModelAndView("ListaConvidados");
 		modelAndView.addObject("convidados", convidados.findAll());
 		modelAndView.addObject(new Convidado());
+		modelAndView.addObject("totalconv", convidados.count() );
+		modelAndView.addObject("totalacomp", convidados.quantidadeacomp() );
 		return modelAndView;
 		}
 
@@ -35,8 +41,6 @@ public class ConvidadosController {
 
 
 
-
 }
-
 
 

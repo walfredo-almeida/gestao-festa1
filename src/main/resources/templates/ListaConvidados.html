@@ -22,9 +22,17 @@
 			</div>
 			
 			 <div class="panel-body">
+				
+				 <div class="alert alert-warning" role="alert" >
+					 
+					  Convidados total: 
+					  <span th:text="${totalconv}">quant conv</span>
+					  Acompanhantes total: 
+					  <span th:text="${totalacomp}">quant acompa</span>
+					</div>
 			 
 					 <form class="form-inline" method="POST" style="margin: 20px 0"
-				     th:object="${convidado}" th:action="@{/convidados}">
+				     th:object="${convidado}" th:action="@{/co nvidados}">
 						<div class="form-group">
 						<input type="text" class="form-control"
 						placeholder="Nome"
