@@ -10,6 +10,6 @@ public interface Convidados extends JpaRepository <Convidado, Long>{
 	long countByAcompanhantes(int chave);
 	
 	@Query("select sum(c.acompanhantes) from Convidado c")
-	long quantidadeacomp();
+	int quantidadeacomp();
 	
 }
