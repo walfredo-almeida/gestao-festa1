@@ -2,9 +2,13 @@ package com.walf.convidados.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -25,20 +29,39 @@ public class ConvidadosController {
 	//@Autowired
 	//private Convidados2 convidados2;
 	
+	
+	@GetMapping("cadastro")
+	public ModelAndView cadastrar(Convidado convidado) {
+		ModelAndView modelAndView = new ModelAndView("Cadastro");
+		modelAndView.addObject(convidado);
+		
+		return modelAndView;
+	}
+	
 	@GetMapping
 	public ModelAndView listar() {
 		ModelAndView modelAndView = new ModelAndView("ListaConvidados");
 		modelAndView.addObject("convidados", convidados.findAll());
 		modelAndView.addObject(new Convidado());
-		modelAndView.addObject("totalconv", convidados.count() );
+		//modelAndView.addObject("totalconv", convidados.count() );
 		modelAndView.addObject("totalacomp", convidados.quantidadeacomp() );
 		return modelAndView;
 		}
 
 	@PostMapping
-	public String salvar(Convidado convidado) {
+	public ModelAndView salvar(@Valid Convidado convidado, BindingResult result) {
+		if (result.hasErrors()) {
+			return cadastrar(convidado);
+			
+		}
+		
 	convidados.save(convidado);
-	return "redirect:/convidados";
+	return listar();
+	}
+	
+	@ModelAttribute("totalconv")
+	public long contarConvidados() {
+		return convidados.count();
 	}
 
 	@ResponseBody
