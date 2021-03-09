@@ -7,7 +7,7 @@ import com.walf.convidados.model.Convidado;
 
 public interface Convidados extends JpaRepository <Convidado, Long>{
      
-	long countByAcompanhantes(int chave);
+	long countByAcompanhantes(int acompanhantes);
 	
 	@Query("select sum(c.acompanhantes) from Convidado c")
 	Integer quantidadeacomp();

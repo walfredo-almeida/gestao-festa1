@@ -1,15 +1,17 @@
 
 .panel-title {
-  
- 
-  background: ;
-  text-align: ;
   border-radius: 75px;
   color: #ff8000;
   font-weight: 500;
-  text-transform: uppercase;
-  
+  text-transform: uppercase;  
   
 }
 
+ .form-group  {
+	padding-bottom: 10px; 
+	
+}
 
+.botaolista {
+	padding-bottom: 10px; 
+}

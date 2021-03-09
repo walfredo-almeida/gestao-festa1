@@ -1,63 +1,74 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
-	<head>
-	<meta charset="UTF-8"/>
-	<meta name="viewport" content="width=device-width" />
-	<title>Lista de Convidados</title>
-	<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"
-	rel="stylesheet"/>
-	<link th:href="@{/webjars/bootstrap/css/bootstrap-theme.min.css}"
-	rel="stylesheet"/>
-	<link th:href="@{css/festa.css}"
-	rel="stylesheet"/>
-	</head>
-	
-  <body>
-		   
-  
-	    <div class="panel panel-default" style="margin: 10px">
-			<div class="panel-heading">
-			<h1 class="panel-title">Lista de convidados</h1>
-			</div>
-			
-			 <div class="panel-body">
-				
-				 <div class="alert alert-warning" role="alert" >					 
-					  Convidados total: 
-					  <span th:text="${totalconv}">quant conv</span>
-					  Acompanhantes total: 
-					  <span th:text="${totalacomp}">quant acompa</span>
-					</div>
-					
-					<a class="btn btn-primary" th:href="@{/convidados/cadastro}">
-									<i class="fa fa-plus-square"></i>
+<html layout:decorate="~{layout}">
+<head><meta charset="UTF-8"/></head>
+<body>
 
-									<span class="hidden-xs hidden-sm">cadastro</span>
-								</a>
-			 
+	<section class="layout-content" layout:fragment="conteudo">
+		<div class="container">
+
+			<div class="panel panel-default" style="margin: 10px">
+				<div class="panel-heading">
+					<h1 class="panel-title">Lista de convidados</h1>
+				</div>
+
+				<div class="panel-body">
+
+					<div class="alert alert-warning" role="alert">
+						Convidados total: <span th:text="${totalconv}">quant conv</span>
+						Acompanhantes total: <span th:text="${totalacomp}">quant
+							acompa</span>
+					</div>
+
+					<div class="botaolista">
+						<a class="btn btn-primary" th:href="@{/convidados/cadastro}">
+							<span class="oi oi-plus"></span> <span
+							class="hidden-xs hidden-md">Cadastro</span>
+						</a>
+					</div>
+
+					<div class="alert  alert-success"
+						th:if="${!#strings.isEmpty(mensagem)}">
+						<i class="fa fa-check-circle"></i> <span th:text="${mensagem}">Mensagem
+							sucesso!</span>
+					</div>
+
 					<table class="table">
 						<thead>
 							<tr>
-							<th>Nome</th>
-							<th>Acompanhantes</th>
+								<th>Nome</th>
+								<th>Acompanhantes</th>
+								<th>Sobrenome</th>
+								<th></th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr th:each="convidado : ${convidados}">
 								<td th:text="${convidado.nome}"></td>
 								<td th:text="${convidado.acompanhantes}"></td>
-								
+								<td th:text="${convidado.nome1}"></td>
+								<td class="text-center">
+									<form method="POST"
+										th:onsubmit="'return confirm(\'Posso remover ' + ${convidado.nome} + '?\');'"
+										th:action="@{/convidados/{id}(id=${convidado.id})}">
+										<input type="hidden" name="_method" value="DELETE" />
+
+										<button type="submit" class="btn btn-danger btn-sm">
+											<span class="oi oi-circle-x iconic-sm" title="Remove"
+												aria-hidden="true"></span>
+										</button>
+									</form>
+								</td>
+								<td><a class="btn btn-danger"
+									th:href="@{/convidados/delete/(id=${convidado.id})}">Delete</a>
+								</td>
+
 							</tr>
 						</tbody>
 					</table>
 				</div>
 			</div>
-		 
-		 
-		 
-		 
- <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
-<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script> 
+		</div>
+	</section>
+	
 </body>
 </html>
