@@ -65,7 +65,7 @@ public class ConvidadosController {
 	}
 
 	@PostMapping
-	public String salvar(@Valid Convidado convidado, BindingResult result, ModelMap model) {
+	public String salvar(@Valid Convidado convidado, BindingResult result) {
 		if (result.hasErrors()) {
 			return "/Cadastro";
 
