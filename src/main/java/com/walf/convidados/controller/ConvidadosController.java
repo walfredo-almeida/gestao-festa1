@@ -64,7 +64,7 @@ public class ConvidadosController {
 		return modelAndView;
 	}
 
-	@PostMapping
+	@PostMapping("salvarr")
 	public String salvar(@Valid Convidado convidado, BindingResult result) {
 		if (result.hasErrors()) {
 			return "/Cadastro";
@@ -75,7 +75,7 @@ public class ConvidadosController {
 		return ("redirect:/convidados");
 	}
 
-	@PostMapping("salvarr")
+	@PostMapping
 	public ModelAndView salvarr(@Valid Convidado convidado, BindingResult result) {
 		if (result.hasErrors()) {
 			return cadastrar(convidado);
