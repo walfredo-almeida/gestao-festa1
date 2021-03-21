@@ -48,7 +48,7 @@
 								<td th:text="${convidado.nome}"></td>
 								<td th:text="${convidado.acompanhantes}"></td>
 								<td th:text="${convidado.sobrenome}"></td>
-								<td th:text="${#temporals.format(convidado.dataEntrada, 'dd/MM/yyyy HH:mm')}"></td>
+								<td th:text="${#temporals.format(convidado.dataEntrada, 'dd/MM/yyyy')}"></td>
 								<td class="text-center">
 									<form method="POST"
 										th:onsubmit="'return confirm(\'Posso remover ' + ${convidado.nome} + '?\');'"

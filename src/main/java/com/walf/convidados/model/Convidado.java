@@ -40,10 +40,10 @@ public class Convidado implements Serializable{
 	private Integer acompanhantes;
 	
 	@NotNull (message = "Data não pode estar vazio")
-	@DateTimeFormat(iso= DateTimeFormat.ISO.DATE_TIME)
+	@DateTimeFormat(iso = ISO.DATE, pattern = "")
 	//@DateTimeFormat(iso= DateTimeFormat.ISO.TIME, pattern = "" pattern = "yyyy-MM-dd HH:mm:ss")
 	@Column(name= "data_entrada", nullable = false, columnDefinition = "DATE")
-	private LocalDateTime dataEntrada;
+	private LocalDate dataEntrada;
 	
 	public Long getId() {
 		return id;
@@ -69,10 +69,10 @@ public class Convidado implements Serializable{
 	public void setSobrenome(String sobrenome) {
 		this.sobrenome = sobrenome;
 	}
-	public @NotNull(message = "Data não pode estar vazio") LocalDateTime getDataEntrada() {
+	public @NotNull(message = "Data não pode estar vazio") LocalDate getDataEntrada() {
 		return dataEntrada;
 	}
-	public void setDataEntrada(@NotNull(message = "Data não pode estar vazio") LocalDateTime dataEntrada) {
+	public void setDataEntrada(@NotNull(message = "Data não pode estar vazio") LocalDate dataEntrada) {
 		this.dataEntrada = dataEntrada;
 	}
 	
