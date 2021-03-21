@@ -33,14 +33,14 @@ public class ConvidadosController {
 
 	@DeleteMapping("/{id}")
 	public String remover(@PathVariable Long id, RedirectAttributes attributes) {
-		convidados.delete(id);
+		convidados.deleteById(id);
 		attributes.addFlashAttribute("mensagem", "convidado removido com sucesso!");
 		return "redirect:/convidados";
 	}
 	
 	@GetMapping("/delete")
 	public String remover1(Long id, RedirectAttributes attributes) {
-		convidados.delete(id);
+		convidados.deleteById(id);
 		attributes.addFlashAttribute("mensagem", "convidado removido com sucesso!");
 		return "redirect:/convidados";
 	}

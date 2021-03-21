@@ -1,6 +1,7 @@
 package com.walf.convidados.resources;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,8 +25,8 @@ public class ConvidadosResources {
 	}
 	
 	@GetMapping("/{id}")
-	public Convidado buscar(@PathVariable Long id) {
-		return convidados.findOne(id);
+	public Optional<Convidado> buscar(@PathVariable Long id) {
+		return convidados.findById(id);
 	}
 	
 		

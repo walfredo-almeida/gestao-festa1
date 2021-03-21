@@ -1,3 +1,5 @@
+web: java $JAVA_OPTS -Dserver.port=$PORT -Dspring.profiles.active=prod -jar target/*.jar
+
 <dependency>
 <groupId>org.postgresql</groupId>
 <artifactId>postgresql</artifactId>

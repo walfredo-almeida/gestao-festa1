@@ -38,6 +38,8 @@
 								<th>Nome</th>
 								<th>Acompanhantes</th>
 								<th>Sobrenome</th>
+								<th>Data</th>
+								<th></th>
 								<th></th>
 							</tr>
 						</thead>
@@ -45,7 +47,8 @@
 							<tr th:each="convidado : ${convidados}">
 								<td th:text="${convidado.nome}"></td>
 								<td th:text="${convidado.acompanhantes}"></td>
-								<td th:text="${convidado.nome1}"></td>
+								<td th:text="${convidado.sobrenome}"></td>
+								<td th:text="${#temporals.format(convidado.dataEntrada, 'dd/MM/yyyy HH:mm')}"></td>
 								<td class="text-center">
 									<form method="POST"
 										th:onsubmit="'return confirm(\'Posso remover ' + ${convidado.nome} + '?\');'"
