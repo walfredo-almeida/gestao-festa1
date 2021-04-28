@@ -12,7 +12,7 @@
 				</div>
 			</div>
 				
-
+            <div class="container">
 					<form class="form-inline" method="POST" style="margin: 20px 0"
 						th:object="${convidado}" th:action="@{/convidados/salvarr}">
 
@@ -33,15 +33,15 @@
 						</div>
 						
 						<div class="form-row">
-							<div class="form-group col-md-6">
+							<div class="form-group col-md-5">
 							    <label for="nome">Nome do Convidado</label>
 								<input type="text" class="form-control" id="nome"
 									placeholder="Nome" th:field="*{nome}"
 									th:classappend="${#fields.hasErrors('nome')} ? 'is-invalid': 'is-valid' " />
 							</div>
-							<div class="form-group col-md-6">
-							     <label for="nome">Quant. Acompanhantes</label>
-								<input type="text" class="form-control"
+							<div class="form-group col-md-4">
+							     <label for="acompanhantes">Quant. Acompanhantes</label>
+								<input type="text" class="form-control" id="acompanhantes"
 									placeholder="Acompanhantes" th:field="*{acompanhantes}"
 									th:classappend="${#fields.hasErrors('acompanhantes')} ? 'is-invalid': 'is-valid'" />
 							</div>
@@ -49,14 +49,14 @@
 
 						<div class="form-row">
 							<div class="form-group col-md-6">
-							     <label for="nome">sobrenome</label>
-								<input type="text" class="form-control" placeholder="Sobrenome"
+							     <label for="sobrenome">sobrenome</label>
+								<input type="text" class="form-control" id="sobrenome" placeholder="Sobrenome"
 									th:field="*{sobrenome}"
 									th:classappend="${#fields.hasErrors('sobrenome')} ? 'is-invalid': 'is-valid'" />
 							</div>
-							<div class="form-group col-md-6">
-							     <label for="nome">Data</label>
-								<input type="date" class="form-control" placeholder="Data"
+							<div class="form-group col-md-4">
+							     <label for="data">Data</label>
+								<input type="date" class="form-control" id="data" placeholder="Data"
 								    th:field="*{dataEntrada}"
 									th:classappend="${#fields.hasErrors('dataEntrada')} ? 'is-invalid': 'is-valid'" />
 							</div>
@@ -64,7 +64,7 @@
 						</div>
 						
 						  <div class="form-row">
-	                    <div class="form-group col-md-6">
+	                    <div class="form-group col-md-4">
 	                        <label for="nome">Nome do Acompanhante</label>
 	                        <input type="text" class="form-control" id="nome" placeholder="Nome Completo"
 	                               autofocus="autofocus"
@@ -73,7 +73,7 @@
 								<span th:errors="*{nome}"></span>
 	                        </div>
 	                    </div>
-	                    <div class="form-group col-md-6">
+	                    <div class="form-group col-md-4">
 	                        <label for="salario">Idade Acompanhante</label>
 	                        <input type="text" class="form-control" id="salario" data-mask="#.##0,00"
 	                               data-mask-reverse="true"  
@@ -98,7 +98,7 @@
 
 					</form>
 
-				
+				</div>
 
 			</div>
 
